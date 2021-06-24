@@ -1,11 +1,39 @@
-# SSH
+# Setup Servers
 
-## Transfer file Windows to Linux
+## Linux
 
-0. On linux install `ssh` & `openssh-server`. check open port `openssh-server` using `sudo service ssh status`
-1. Open `powershell` on windows. Using:<br> `scp -r Disk:\dir\to\file linux_username@linux_hostname_or_local_ip:/remote/directory/on/linux/pc`
+Install `ssh` & `openssh-server`:
+```bash
+sudo apt install ssh openssh-sever -y
+```
 
-## Transfer file Linux to Window
+Check open port `openssh-server` using:
+```bash
+sudo service ssh status
+```
 
-0. On linux install `ssh` & `openssh-server`. check open port `openssh-server` using `sudo service ssh status`
-1. Open `powershell` on windows. Using:<br> `scp linux_username@linux_hostname_or_local_ip:/remote/directory/on/linux/file`
+## MacOS
+
+Set remote login:
+```bash
+sudo systemsetup -setremotelogin on
+```
+
+Check remote login:
+```bash
+sudo systemsetup -getremotelogin
+```
+
+# Transfer
+
+## Send
+
+```bash
+scp -r /path/of/file user_name@hostname_or_local_ip:/path/file
+```
+
+## Receive
+
+```bash
+scp -r user_name@hostname_or_local_ip:/path/file /path/of/file
+```
